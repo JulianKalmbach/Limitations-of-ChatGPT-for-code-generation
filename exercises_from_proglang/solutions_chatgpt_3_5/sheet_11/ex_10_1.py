@@ -1,0 +1,1 @@
+compose = lambda f, g: lambda x, y: f(g(x, y))

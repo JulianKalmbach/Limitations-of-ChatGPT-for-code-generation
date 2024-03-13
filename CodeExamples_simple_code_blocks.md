@@ -1,8 +1,9 @@
 # Introduction to ChatGPT - Limitations of ChatGPT for code generation
+# Simple Code Blocks
 
 ## If statement
 
-Can you generate me a code block that checks a variable for a ceratain value?
+Can you generate me a code block that checks a variable for a certain value?
 
 _Certainly! The code block below is a simple example in Python that checks if a variable has a certain value:_
 
@@ -186,32 +187,3 @@ match my_variable:
     case 7: print("Executing Operation 7")
     case 8: print("Executing Operation 8")
 ```
-
-## Recursion
-
-I have a list of numbers. The amount of numbers in the list can always be devided by 2. I would like to write a program that always adds two neighbored numbers of the list and print the result.
-The result should be added to the result of the neighbored result and so on until the sum of the whole list is reached and printed.
-
-_Certainly! You can achieve this by iterating through the list and adding each pair of neighboring numbers until you reach the sum of the entire list. Here's an example in Python:_
-
-```python
-# Replace 'your_list' with your actual list of numbers (ensure it has an even length)
-your_list = [1, 2, 3, 4, 5, 6, 7, 8]  # Replace with your list of numbers
-
-# Ensure the list has an even length
-if len(your_list) % 2 != 0:
-    print("The list length must be even.")
-else:
-    # Initialize the result with the first element of the list
-    result = your_list[0]
-
-    # Iterate through the list and add each pair of neighboring numbers
-    for i in range(0, len(your_list) - 1, 2):
-        result += your_list[i + 1]
-        print(f"Partial sum: {result}")
-
-    print(f"\nFinal sum: {result}")
-```
-
-_This program first checks if the length of the list is even. If it is, it initializes the `result` variable with the first element of the list and then iterates through the list, adding each pair of neighboring numbers. The partial sums are printed during the process, and the final sum is printed at the end._
-
