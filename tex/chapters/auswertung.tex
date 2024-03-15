@@ -14,11 +14,11 @@
 
 \section{Zuverlässigkeit}
 \label{sec:zuverleassigkeit}
-    Mit der Zuverlässigkeit der Programme von ChatGPT ist primär gemeint, ob die Programme direkt ohne weiteres den
-    richtigen Output, also die richtige Ausgabe liefern.
+    Mit der Zuverlässigkeit der Programme von ChatGPT ist primär gemeint, ob die Programme direkt ohne Weiteres den
+    richtigen Output, also die richtige Ausgabe, liefern.
     Diese Bedingung wird \textbf{pass@1} genannt.
     ChatGPT 3.5 hat von den 41 Aufgaben 32 mit einem richtigen Output gelöst, während es bei ChatGPT 4.0 33 waren.
-    Der Unterschied hier ist tatsächlich marginal, weswegen sich hier sagen lässt, dass ChatGPT 3.5 und 4.0 zumindest in
+    Der Unterschied hier ist tatsächlich marginal, weswegen sich hier sagen lässt, dass sich ChatGPT 3.5 und 4.0 zumindest in
     Bezug auf die generelle Zuverlässigkeit nicht unterscheiden.
     Wenn man nun die pass@1-Rate von ChatGPT 3.5 und 4.0 in Abhängigkeit der Einteilung der Aufgaben in die Schwierigkeitsgrade
     leicht (\("\)easy\("\)), mittel (\("\)medium\("\)) und schwer (\("\)hard\("\)) beobachtet, ergibt sich, dass
@@ -35,16 +35,16 @@
 
     Schaut man sich die Metrik "Anforderungen erfüllt" an und klammert die Programme aus, die grundsätzlich schon keinen korrekten Output liefern,
     zeigt sich, dass ChatGPT 3.5 in 6 von 32 Fällen die Anforderungen nicht erfüllt, wodurch tatsächlich nur noch 26 der 41 Aufgaben komplett richtig gelöst wurden.
-    Das lässt sich vor allem auf die veralteten Daten zurückführen mit denen ChatGPT 3.5 trainiert wurde.
-    In allen Fällen in denen ChatGPT 3.5 die Anforderungen nicht erfüllte aber eine richtige Ausgabe lieferte, handelte es sich um nicht
+    Das lässt sich vor allem auf die veralteten Daten zurückführen mit, denen ChatGPT 3.5 trainiert wurde.
+    In allen Fällen, in denen ChatGPT 3.5 die Anforderungen nicht erfüllte aber eine richtige Ausgabe lieferte, handelte es sich um nicht
     verwendetes Pattern-Matching oder Datenklassen.
-    Dass dennoch ein richtiger Output erzeugt wurde, liegt daran, dass ChatGPT 3.5 Pattern-Matching wie das vor dem
+    Dass dennoch ein richtiger Output erzeugt wurde, liegt daran, dass ChatGPT 3.5 Pattern-Matching, wie das vor dem
     Release dieser üblich war, mit if-, elif-, else-Verknüpfungen umsetzt.
     Betrachtet man die Lösungen von ChatGPT 4.0 unter denselben Bedingungen, kann man erkennen, dass ChatGPT 4.0 hier deutlich
     bessere Leistungen bringt als ChatGPT 3.5.
-    Bei ChatGPT 4.0 erfüllen nämlich alle Programme, welche einen richtigen Output liefern auch die Anforderungen.
+    Bei ChatGPT 4.0 erfüllen nämlich alle Programme, welche einen richtigen Output liefern, auch die Anforderungen.
     Somit löst ChatGPT 4.0 mit 33 von 41 Aufgaben deutlich mehr Aufgaben korrekt als ChatGPT 3.5.
-    Schaut man sich den Graphen aus Figure 4.1 nochmal an und bewertet die Programme nun anhand der Metrik "Anforderungen erfüllt" ergibt sich daraus der folgende Graph:
+    Schaut man sich den Graphen aus Figure 4.1 nochmal an und bewertet die Programme nun anhand der Metrik "Anforderungen erfüllt", ergibt sich daraus der folgende Graph:
     \begin{figure}[H]
         \centering
         \includegraphics[width=\textwidth]{auswertung/req_met_difficulty}
@@ -55,14 +55,14 @@
 
 \section{Effizienz}
 \label{sec:effizienz}
-    Um die Effizienz der von ChatGPT generierten Programme zu bewerten ist es naheliegend sie mit den vom Lehrstuhl für
-    Programmiersprachen bereitgestellten zu vergleichen.
+    Um die Effizienz der von ChatGPT generierten Programme zu bewerten ist es naheliegend, sie mit den vom Lehrstuhl für
+    Programmiersprachen bereitgestellten Musterlösungen zu vergleichen.
     Die Metriken, die hierfür interessant sind, sind LOC$_{pars}$ und Cyclomatic Complexity, beziehungsweise McCabe Complexity.
 
     \subsection{LOC$_{pars}$}
     Vergleicht man die Zeilen an tatsächlichem Programmcode, also LOC$_{pars}$ mit denen von der jeweiligen Musterlösung,
     zeigt sich, dass ChatGPT 4.0 sogar etwas effizienter zu sein scheint als die Musterlösung, wärend ChatGPT 3.5 im Schnitt etwas weniger effizient ist.
-    Wichtig zu beachten ist, dass die Fälle in denen ChatGPT 4.0 oder 3.5 jeweils nicht die Erwartungen erfüllt haben, nicht
+    Wichtig zu beachten ist, dass die Fälle, in denen ChatGPT 4.0 oder 3.5 jeweils nicht die Erwartungen erfüllt haben, nicht
     gewertet werden, da dies die Aussagekraft über die Effizienz anhand der Anzahl an Zeilen verfälschen würde.
     \begin{figure}[H]
         \centering
@@ -76,20 +76,21 @@
     Im Groben lässt sich also sagen, dass ChatGPT gleich viele Zeilen braucht um die Aufgaben zu lösen wie die Musterlösung, wobei ChatGPT 4.0 sogar
     minimal weniger und ChatGPT 3.5 etwas mehr Zeilen braucht.
     Diese Metrik kann hilfreich sein, da Programme, die weniger Zeilen an Code haben, teils besser lesbar sind und weniger
-    Leistung brauchen, es muss aber nicht zwangsweise heißen, dass ein Programm mit weniger Zeilen besser ist, als ein
+    Leistung brauchen.
+    Dies muss aber nicht zwangsweise heißen, dass ein Programm mit weniger Zeilen besser ist, als ein
     Programm für denselben Zweck mit mehr Zeilen.
     Dennoch ist es interessant die Zahlen gegenüberzustellen und zu vergleichen, da es durchaus im Interesse von Entwicklern ist,
     so wenig Code wie möglich zu schreiben.
 
-    \subsection{Cyclomatic Comlexity}
-    Bei der Cyclomatic Complexity handelt es sich, um ein sehr effizientes Mittel um die Effizienz eines Programms zu bewerten.
+    \subsection{Cyclomatic Complexity}
+    Bei der Cyclomatic Complexity handelt es sich um ein sehr wirksames Mittel um die Effizienz eines Programms zu bewerten.
     Dadurch, dass mit jedem if, else, while usw. die Cyclomatic Complexity steigt, ist ein Programm, welches das gleiche
-    Problem mit einer geringeren Cyclomatic Complexity lösen kann, als effizienter zu bewerten. Dies gilt nicht ausschließlich,
-    lässt sich aber grob als Aussage treffen.
+    Problem mit einer geringeren Cyclomatic Complexity lösen kann, als effizienter zu bewerten.
+    Dies gilt nicht ausschließlich, lässt sich aber grob als Aussage treffen.
 
     Vergleicht man nun die Summe der Cyclomatic Complexity-Werte gruppiert nach der jeweiligen Schwierigkeit, fällt auf,
-    fällt auf, dass sowohl ChatGPT 3.5 als auch ChatGPT 4.0 in der Summe weniger effiziente Programme schreiben.
-    Nur beim Vergleich von ChatGPT 4.0 und der Musterlösung bei der Schwierigkeit hard, sind die Lösungen von ChatGPT 4.0
+    dass sowohl ChatGPT 3.5 als auch ChatGPT 4.0 in der Summe weniger effiziente Programme schreiben.
+    Nur beim Vergleich von ChatGPT 4.0 und der Musterlösung bei der Schwierigkeit hard sind die Lösungen von ChatGPT 4.0
     etwas besser als die Musterlösung.
     \begin{figure}[H]
         \centering
@@ -99,10 +100,10 @@
     \end{figure}
     Allerdings muss man auch sagen, dass der Abstand zur Musterlösung weder bei ChatGPT 3.5, noch bei ChatGPT 4.0 besonders
     hoch ist.
-    Geht es allerdings darum die Programme besonders effizient zu gestalten, scheint ChatGPT nicht die beste Wahl zu sein.
+    Geht es allerdings darum, die Programme besonders effizient zu gestalten, scheint ChatGPT nicht die beste Wahl zu sein.
     Das wird noch einmal deutlicher, wenn man berücksichtigt, dass die Musterlösungen des Lehrstuhls auch nicht darauf ausgelegt
-    sind besonders effizient, sondern eher verständlich zu sein.
-    Es ist also davon auszugehen, dass man die Probleme auch nochmal effizienter lösen könnte.
+    sind, besonders effizient, sondern eher verständlich zu sein.
+    Es ist also davon auszugehen, dass man die Probleme auch noch effizienter lösen könnte.
 
 \ifstandalone
     \printglossary

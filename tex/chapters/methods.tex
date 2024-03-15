@@ -11,15 +11,15 @@
 
 \chapter{Methoden}
 \label{ch:methoden}
-    Um ChatGPT auf seine Fähigkeit Sourcecode zu schreiben zu prüfen wurde erst einmal damit angefangen kleine Code-Bausteine zu erfragen.
+    Um ChatGPT auf seine Fähigkeit, Sourcecode zu schreiben, zu prüfen, wurde erst einmal damit angefange,n kleine Code-Bausteine zu erfragen.
     Dabei war aber stehts wichtig, dass in der Frage nie direkt der Code-Bautstein erwähnt war, der generiert werden sollte.
-    Diese Methode diente als kleiner Einstieg und dafür erstmal grundsätzlich die Fähigkeiten einschätzen zu können.
+    Diese Methode diente als kleiner Einstieg und dafür erstmal grundsätzlich die Fähigkeiten der KI einschätzen zu können.
     Schon hier ließen sich kleine Probleme erkennen, wenn es auch wenige waren.
 
     Um nun die Fähigkeiten wirklich tiefer gehend zu testen, bot es sich an, ChatGPT die Übungsblätter der Vorlesung "Einführung in die Programmierung"
     des Instituts für Informatik, bzw. des Lehrstuhls für Programmiersprachen der Universität Freiburg, lösen zu lassen.
     Diese müssen alle Studierenden der Informatik an der Universität Freiburg innerhalb der ersten drei Semester bestehen
-    und umfassen viele Themen, die für das allgemeine Verständnis für das Programmieren erforderlich sind,
+    und sie umfassen viele Themen, die für das allgemeine Verständnis für das Programmieren erforderlich sind,
     weshalb diese eine gute Messlatte für grundsätzliche Fähigkeiten beim Programmieren sind.
 
     Bevor ChatGPT die Aufgaben allerdings gestellt werden konnten, mussten diese erst in ein passendes Format gebracht werden, da
@@ -29,28 +29,31 @@
     Da ohnehin jeglicher Inhalt der Arbeit in einem GitHub Repository gespeichert ist,
     hat sich an der Stelle das Format Markdown als sinnvoll herausgestellt, woraufhin die entsprechenden Aufgaben in das neue Format übertragen wurden.
     Wichtig dabei war auch, dass teilweise in den Aufgaben auch separat Sourcecode vorgegeben war und zur Verfügung gestellt wurde.
-    Dieser wurde dann auch in den Aufgabentext integriert, um sicherzustellen, dass die Aufgabe lösbar ist und dieselben Bedingungen wie auch für die Studierenden gelten.
+    Dieser wurde dann ebenfalls in den Aufgabentext integriert, um sicherzustellen, dass die Aufgabe lösbar ist und dieselben Bedingungen wie auch für die Studierenden gelten.
     Insgesamt wurden ChatGPT so 41 Programmieraufgaben gestellt, wobei darunter auch einige Teilaufgaben sind, da es an manchen Stellen
-    als sinnvoll erschien die Aufgabenstellung aufzusplitten um so die Vergleichbarkeit bestimmter Elemente sicherzustellen.
+    als sinnvoll erschien, die Aufgabenstellung aufzuteilen um so die Vergleichbarkeit bestimmter Elemente sicherzustellen.
+    Diese Aufgaben können auch, in genau dem Format, in dem sie ChatGPT auch gestellt wurden, auf dem GitHub Repository oder
+    auf der Kurswebseite "Einführung in die Programmierung", eingesehen werden.
+    Die Links dazu befinden sich in den Quellen.
 
-    Um die Programme, beziehungsweise den Sourcecode miteinander vergleichen zu können wurden die von ChatGPT generierten Programmcodes anhand verschiedener Metriken bewertet.
+    Um die Programme, beziehungsweise den Sourcecode, miteinander vergleichen zu können, wurden die von ChatGPT generierten Programmcodes anhand verschiedener Metriken bewertet.
     Diese Metriken waren wie folgt:
     \begin{itemize}
-    \item \textbf{pass@1:} Erzeugt das Programm den gewünschten Output, also ist das, was das Programm als "Ergebnis" ausgibt korrekt?
-    Dieser Wert kann entweder "Wahr", das Programm liefert den gewünschten Output oder "Falsch", das Programm liefert nicht den gewünschten Output annehmen.
+    \item \textbf{pass@1:} Erzeugt das Programm den gewünschten Output, also ist das, was das Programm als "Ergebnis" ausgibt, korrekt?
+    Dieser Wert kann entweder "Wahr", das Programm liefert den gewünschten Output, oder "Falsch", das Programm liefert nicht den gewünschten Output, annehmen.
     \item \textbf{Anforderungen erfüllt:} Auch diese Metrik kann etweder den Wert "Wahr" oder "Falsch" annehmen.
     Liefert ein Programm zwar den richtigen Output, entspricht aber nicht den spezifischen Anforderungen, welche in der Aufgabe gestellt waren,
     so erfüllt das Programm auch nicht diese Metrik. Der Wert ist also "Falsch".
     Liefert das Programm einen falschen Output, wurden offensichtlich die Anforderungen nicht erfüllt,
     denn eine Anforderung ist logischerweise immer, dass das Programm so funktioniert wie gewünscht.
     \item \textbf{LOC$_{tot}$:} LOC steht für "Lines of Code" und ist eine bekannte, wenn auch alleinstehend nicht immer so vielsagende Metrik für Programmcode.
-    Hier kann das aber ganz interessant sein, da wir so zum Beispiel überprüfen können, ob ChatGPT fehleranfälliger wird, abhängig der Anzahl an Zeilen.
-    Bei LOC$_{tot}$ werden alle Zeilen, also auch Zeilen mit Kommentaren und Leerzeilen.
-    \item \textbf{LOC$_{pars}$:} mit $_{pars}$ ist "parsable" gemeint, also jede Zeile des Sourcecodes, welcher tatsächlichen compilierbaren Code enthält.
-    Leerzeilen oder Kommentare werden also nicht mit gezählt.
-    Diese Metrik ist insbesondere interessant zu vergleichen, da sie tatsächlich helfen kann Aussagen darüber zu treffen, wie effizient oder "gut" ein Programm geschrieben wurde
+    Hier kann es aber interessante Ergebnisse liefern, da wir so zum Beispiel überprüfen können, ob ChatGPT fehleranfälliger wird, abhängig der Anzahl an Zeilen.
+    Bei LOC$_{tot}$ werden alle Zeilen, also auch Zeilen mit Kommentaren und Leerzeilen gezählt.
+    \item \textbf{LOC$_{pars}$:} mit $_{pars}$ ist "parsable" gemeint, also jede Zeile des Sourcecodes, welcher tatsächlichen, kompilierbaren Code enthält.
+    Leerzeilen oder Kommentare werden also nicht mitgezählt.
+    Diese Metrik ist insbesondere interessant zu vergleichen, da sie tatsächlich helfen kann, Aussagen darüber zu treffen, wie effizient oder "gut" ein Programm geschrieben wurde.
     \item \textbf{Cyclomatic Complexity:} Diese wird auch McCabe complexity genannt und beschreibt die Anzahl an decision points,
-    also Entscheidungspunkten innerhalb eines Programms.
+    also Entscheidungspunkten, innerhalb eines Programms.
     Allerdings wurde diese in diesem Fall nur eingeschränkt angewendet.
     Für bestimmte vorkommen von Codeelementen wird diese Metrik eins hochgezählt.
     Diese lauten wie folgt:
@@ -73,7 +76,7 @@
     LOC$_{tot}$ wurde dabei eher als Metrik gewählt, um die Programme von ChatGPT zu vergleichen und gegebenenfalls Erkenntnisse zum Beispiel darüber zu erlangen,
     wie viele Kommentare ChatGPT 3.5 beziehungsweise 4.0 einsetzt.
 
-    Die aus diesem Prozess gewonnenen Daten wurden daraufhin auf die Kernfragen dieser Arbeit überprüft:
+    Die aus diesem Prozess gewonnenen Daten wurden daraufhin auf die Kernfragen dieser Arbeit überprüft.
 
 
 \end{document}
