@@ -189,7 +189,7 @@ Implementieren Sie das zu Beginn beschriebene Programm in folgenden Schritten:
 
 #### a)
 Schreiben Sie eine Funktion node_to_str, die einen Ausdrucks-baum als Argument nimmt und dessen Darstellung als String 
-zurückgibt. Ma-chen Sie die Klammerung von Operatoren explizit und verwenden Sie genau ein Leerzeichen um Operatoren 
+zurückgibt. Machen Sie die Klammerung von Operatoren explizit und verwenden Sie genau ein Leerzeichen um Operatoren 
 von Argumenten zu trennen. Beispiel:
 
 ````python

@@ -12,7 +12,7 @@
 \chapter{Auffälligkeiten im Programmcode}
 \label{ch::Auffaelligkeiten_im_Programmcode}
     Neben den Metriken, die zur Einstufung der Programme im Allgemeinen dienen, ist dennoch auch im Einzelnen die Frage zu stellen,
-    ob es Auffälligkeiten wie Fehler oder "unschönen" Programmcode gibt.
+    ob es Auffälligkeiten wie Fehler oder \"unschönen\" Programmcode gibt.
     Im Allgemeinen lässt sich aber sagen, dass ChatGPT an vielen Stellen keinen schlechten Code schreibt.
     Gerade ChatGPT 4.0 erklärt den generierten Programmcode meist ausgiebig in den Antworten und fügt auch viele
     Kommentare im Sourcecode hinzu um die Verständlichkeit zu verbessern.
@@ -23,12 +23,95 @@
     Die Programme, welche nicht den richtigen Output lieferten, waren entweder gar nicht ausführbar, hingen in einem Deadlock fest, oder funktionierten an sich,
     lieferten tatsächlich eine andere Ausgabe als gewünscht, wobei die Tests größtenteils vorher bekannt waren und in der Aufgabenstellung standen.
 
+    Einen Deadlock lieferte beispielsweise der Programmcode, der von ChatGPT zur Aufgabe 10.1b erzeugt wurde.
+    Die Eingabe, welche zu diesem Output geführt hat, war die folgende:
+    \begin{displayquote}
+        - Die Mindestpunktzahl wird wie folgt berechnet: \(```\)pass\_points = max\_points // \(2```\)
+
+        - Zur Unterstützung seines Wahlkampfs fordert Ex-Präsident T., dass die Durchfallquote aller Klausuren bei höchstens 40%
+        liegen darf. Sollte das in dieser Klausur nicht der Fall sein, werden die pass\_points so weit nach unten angepasst,
+        bis die Forderung erfüllt ist.
+    \end{displayquote}
+    \lstinputlisting[language=Python,
+                     caption=Deadlock in While loop,
+                     label={lst:deadlock-in-while}]
+    {while_deadlock.py}
+
+    Das Programm läuft mit eben jener While loop bei dem vorgegebenen Test case in einen Deadlock.
+    Genauer gesagt macht die Loop genau das Gegenteil, von dem, was sie soll.
+    Ist die \textbf{pass\_rate} nämlich vorher schon größer als 40\%, kommt die While loop nicht mehr an ihre Abbruchbedingung.
+    Das ist ein grober logischer Fehler, der abgesehen davon, dass man in dem gegebenen Programm weiß, dass es aus dieser
+    Loop kommt auch gar nicht so leicht zu identifizieren ist nur durch Anschauen des codes.
+
+    ChatGPT, zumindest ChatGPT 3.5 hat tatsächlich aber auch code erzeugt, der gar nicht ausgeführt werden kann.
+    Dabei hat ChatGPT 3.5 zur Aufgabe 13.2 folgenden code erzeugt:
+    \lstinputlisting[language=python,
+                     caption=Verwendung einer Klassentyps statt einer Typvariable,
+                     label={lst:Enum_inead_of_TypVar}]
+    {unexecutable_code_1.py}
+
+    Beim versuch den Code auszuführen, bekommt man aber folgenden Fehler:
+
+    \textcolor{red} {
+        TypeError: Parameters to Generic[...] must all be type variables or parameter specification variables.
+    }
+
+    Die das zweite Argument von Generic[] Enum ist.
+    Generic[] nimmt aber keine Klassen in dem Sinne, sondern Typvariablen, also müsste das zweite Argument von Generic auch als TypVar() implementiert werden.
+    Es scheint also, dass ChatGPT hier Schwierigkeiten damit hat, den richtigen Typ zu wählen.
+
+    Der Sourcecode der Musterlösung sieht für die gleiche Funktion so aus:
+    \lstinputlisting[language=python,
+                     caption=Ausschnitt aus der Musterlösung 13.2,
+                     label={lst:sample_solution_13_2}]
+    {unexecutable_code_correct.py}
+
+    Auch ChatGPT 4.0 schaffte es nicht die Funktion richtig zu implementieren.
+    Zwar gab es bei der Lösung von ChatGPT 4.0 keine TypeErrors, allerdings generierte ChatGPT 4.0 eine unfertige Lösung, welche
+    NotImplementedErrors zurückgibt.
+    \lstinputlisting[language=python,
+                     caption=Ausschnitt aus dem Lösungsversuch von ChatGPT 4.0,
+                     label={lst:13_2_chatgpt_4_0}]
+    {ex_13_2_ChatGPT4_0.py}
+
+    Sowohl ChatGPT erzeugten also teilweise auch fehlerbehafteten Code.
+    Teilweise auch mit Fehlern, die von einem Entwickler schon beim Schreiben des Codes aufgefallen wären, wie beispielsweise
+    der TypeError in der Lösung von ChatGPT 3.5 zur Aufgabe 13.2. Aber auch Logikfehler treten teilweise auf, was allein
+    dadurch schon belegt ist, dass die Programme nicht alle den gewünschten Output liefern.
+
 \section{Pattern Matching}
 \label{sec:pattern_matching}
+    Ein Problem das schon beim Testen der einfachen Codeblöcke zu beobachten war, ist, dass ChatGPT 3.5 Informationen
+    zur Umsetzung von Pattern Matching oder auch \"Match-Case\" fehlen, oder einfach nicht berücksichtigt werden.
+    Klar ist, dass Pattern Matching in Python erst mit der Version python3.10 veröffentlicht wurde, welche es erst seit Oktober 2021 gibt.
+    ChatGPT 3.5 wurde aber zuletzt im September 2021 mit Daten gefüttert, hat also noch kein Wissen über python 3.10.
+    Dadurch konnte ChatGPT bei einigen Aufgaben die Requirements nicht erfüllen.
+    Auf die Aufforderung:
+    \begin{displayquote}
+        Schreiben Sie eine Funktion node\_to\_str, die einen Ausdrucksbaum als Argument nimmt und dessen Darstellung als String
+        zurückgibt.
+        Machen Sie die Klammerung von Operatoren explizit und verwenden Sie genau ein Leerzeichen um Operatoren
+        von Argumenten zu trennen.
+
+        [...]
+
+        Verwenden Sie hierzu Pattern Matching und keine if-Verzweigungen.
+
+        [...]
+    \end{displayquote}
+
+    folgenden Code erzeugt:
+    \lstinputlisting[language=python,
+                     caption=Kein Pattern Matching\, obwhol das verlangt war,
+                     label={lst:no_pattern_matching}]
+    {missing_pattern_matching.py}
 
 
 \section{Dataclasses}
 \label{sec:dataclasses}
-
+    Die Anforderung Datenklassen zu nutzen, wurden von ChatGPT 3.5 ebenfalls nicht berücksichtigt, was interessant ist,
+    da es Datenklassen bereits seit der Python Version 2.7 gibt und ChatGPT 3.5 das dementsprechend zumindest kennen müsste.
+    Die Programme von ChatGPT funktionierten dann zwar meist auch, wurden aber eben nicht über Datenklassen, sondern
+    über normale Klassen umgesetzt.
 
 \end{document}
