@@ -29,18 +29,18 @@
 % -----------------------------------------------------------------------------------
 % English chair and thesis info
 % -----------------------------------------------------------------------------------
-\institute{Institute for Economics}
-\chair{Chair for Information Systems Research}
+\institute{Institut für Wirtschaftswissenschaften}
+\chair{Lehrstuhl für Wirtschaftsinformatik}
 
-\thesisType{Seminar Thesis}
-\thesisTitle{Creation of a \LaTeX~Template for\\Students to use for their Thesis}
+\thesisType{Seminararbeit}
+\thesisTitle{Limitationen von ChatGPT beim Generieren von Programmiercode }
 \submitDate{March 15, 2024}
 \editingTime{October 30, 2024 - March 15, 2024}
 
 % Supervisor
 \supervisor{Tano Müller}
-\supervisorDepartment{Institute for Economics}
-\supervisorChair{Chair for Information Systems Research}
+\supervisorDepartment{Institut für Wirtschaftswissenschaften}
+\supervisorChair{Lehrstuhl für Wirtschaftsinformatik}
 
 % -----------------------------------------------------------------------------------
 % German chair and thesis info
@@ -84,7 +84,7 @@
     % -------------------------------------------------------------------------------
     % Cover page
     % -------------------------------------------------------------------------------
-    \input{settings+/front_matter/covers/cover}                     \cleardoublepage
+    \input{settings+/front_matter/covers/cover}
 
     % -------------------------------------------------------------------------------
     % Abstract, Zusammenfassung, ToC
@@ -92,44 +92,24 @@
     % -------------------------------------------------------------------------------
     % Abstract in English and German
     \pagenumbering{Roman}  % I, II, III..
-    \input{chapters/abstract}                                             \clearpage
+    \input{chapters/abstract}
 
     % Table of contents
-    \tableofcontents                                                      \clearpage
+    \tableofcontents
 
     % -------------------------------------------------------------------------------
     % Main Content
     % -------------------------------------------------------------------------------
     % Introduction, Goals of the work, Fundamentals, State of the Art, Content,
     % Simulation, Real World Experiment, Outlook, Acknowledgements
-    \cleardoublepage
-    \pagenumbering{arabic}  % 1, 2, 3..
-    \input{chapters/introduction}                                         \clearpage
-    \input{chapters/theory}                                               \clearpage
-    \input{chapters/sota}                                                 \clearpage
-    \input{chapters/implementation}                                       \clearpage
-    \input{chapters/experiment}                                           \clearpage
-    \input{chapters/discussion}                                           \clearpage
-    \input{chapters/summary}                                              \clearpage
-    \input{chapters/conclusion}                                           \clearpage
-    \input{chapters/outlook}                                              \clearpage
-
-    % Bibliography
-    \printbibliography[heading=bibintoc]                            \cleardoublepage
+    \pagenumbering{arabic} % 1, 2, 3...
+    \input{chapters/introduction}
+    \input{chapters/methods}
+    \input{chapters/auffaelligkeiten}
 
     % -------------------------------------------------------------------------------
     % Appendix and Glossary
     % -------------------------------------------------------------------------------
-    \pagenumbering{Alph} % A, B, C..
-
-    % Appendix
-    \input{chapters/appendix}                                             \clearpage
-
-    % print main glossary
-    %       type=main           glossary
-    %       type=symbolslist    list of symbols
-    %       type=acronyms       list of acrononyms
-    \printglossary[type=main]
 
     % Either print all entries or only used entries for all lists
     \glsaddallunused

@@ -6,37 +6,6 @@
     % ------------------------
     % ENGLISH DEFINITIONS HERE
     % ------------------------
-    \newcommand{\coverTitle}        {Submitted to the \uniEn\\
-                                     \@institute\\
-                                     \@chair}
-    \newcommand{\integrityTitle}    {\uniEn\\
-                                     \@institute\\
-                                     \@chair}
-
-    \newcommand{\authortitle}       {Author}
-    \newcommand{\matriculationnmbr} {Matriculation Number}
-    \newcommand{\editingtimetitle}  {Editing Time}
-    \newcommand{\examinerstitle}    {Examiners}
-    \newcommand{\supervisorstitle}  {Supervior}
-    \newcommand{\declarationstitle} {Declaration}
-
-    \newcommand{\declarationsbody}  {
-        & I hereby declare, that I am the sole author and composer of this Thesis
-          and that no other sources or learning aids, other than those listed,
-          have been used. Furthermore, I~declare that I have acknowledged the work
-          of others by providing detailed references of said work.\\
-        & \\
-        & I hereby also declare, that my Thesis has not been prepared for another
-          examination	or assignment, either wholly or excerpts thereof.\\
-    }
-
-    \newcommand{\placeDate}         {Place, Date}
-    \newcommand{\signature}         {Signature}
-}{
-
-    % ------------------------
-    % GERMAN DEFINITIONS HERE
-    % ------------------------
     \newcommand{\coverTitle}        {Vorgelegt an der \uni\\
                                      \@institute\\
                                      \@chair}
@@ -47,23 +16,16 @@
     \newcommand{\authortitle}       {Autor}
     \newcommand{\matriculationnmbr} {Matrikelnummer}
     \newcommand{\editingtimetitle}  {Zeitraum}
-    \newcommand{\examinerstitle}    {Prüfer}
     \newcommand{\supervisorstitle}  {Betreuer}
-    \newcommand{\declarationstitle} {Erklärung}
 
-    \newcommand{\declarationsbody}  {
-        & Hiermit erkläre ich, dass ich diese Abschlussarbeit selbständig verfasst
-          habe, keine anderen als die angegebenen Quellen/Hilfsmittel verwendet
-          habe und alle Stellen, die wörtlich oder sinngemäß aus veröffentlichten
-          Schriften entnommen wurden, als solche kenntlich gemacht habe.\\
-        & \\
-        & Darüber hinaus erkläre ich, dass diese Abschlussarbeit nicht, auch nicht
-        auszugsweise, bereits für eine andere Prüfung angefertigt wurde.\\
-    }
+}{
 
-    \newcommand{\placeDate}         {Ort, Datum}
-    \newcommand{\signature}         {Unterschrift}
+    % ------------------------
+    % GERMAN DEFINITIONS HERE
+    % ------------------------
+
 }
+\fi
 
 % --------------------------------------------------------------------------------
 % Cover
@@ -166,36 +128,14 @@
                                            & \matriculationnmbr: \@matrikelnr\\
                                            & \\
                 \textbf{\editingtimetitle} & \@editingTime\\
-                                           & \\ 
-                \textbf{\examinerstitle}   & \@firstExaminer,\\
-                                           & \@firstExaminerDepartment\\
-                                           & \@firstExaminerChair\\
                                            & \\
-
-                                           \ifdefined \@secondExaminer
-                                               & \@secondExaminer,\\
-                                               & \@secondExaminerDepartment\\
-                                               & \@secondExaminerChair\\
-                                           \else
-                                               & \\
-                                               & \\
-                                           \fi
-
                                            & \\
                 \textbf{\supervisorstitle} & \@supervisor,\\
                                            & \@supervisorDepartment\\
                                            & \@supervisorChair\\
                                            & \\
-                \textbf{\declarationstitle} \declarationsbody
-                                           & \\
-                                           & \\
-                                           &
-            \end{tabular}
 
-            \parbox{0.8\textwidth} {
-                \par\noindent\makebox[5cm]{\hrulefill} \hfill\makebox[5cm]{\hrulefill}%
-                \par\noindent\makebox[5cm][l]{\placeDate} \hfill\makebox[5cm][l]{\signature}%
-            }
+            \end{tabular}
         \end{center}
     \end{titlepage}
 }

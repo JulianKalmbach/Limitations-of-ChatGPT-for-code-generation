@@ -41,7 +41,7 @@ Punkte eine 1.
 liegen darf. Sollte das in dieser Klausur nicht der Fall sein, werden die pass_points so weit nach unten angepasst, 
 bis die Forderung erfüllt ist.
 
-Als Eingabe soll die Funktion wie gehabt das student_points Dictionary be-kommen, ebenso wie die max_points und den 
+Als Eingabe soll die Funktion wie gehabt das student_points Dictionary bekommen, ebenso wie die max_points und den 
 Namen des Studierenden als String.
 ````
 >>> student_points = {"Adam": 63, "John": 112, "Donald": 43}
